@@ -5,7 +5,10 @@ const MUSICLIST = ["./sounds/crash.mp3", "./sounds/kick-bass.mp3", "./sounds/sna
 const LOSET = document.querySelectorAll("button").length
 
 
-
+function playSound(num){
+    const sound = new Audio(MUSICLIST[num])
+    sound.play()
+}
 
 
 
@@ -13,9 +16,7 @@ for (let i = 0; i < LOSET; i++){
 
     document.querySelectorAll("button")[i].addEventListener("click", function () {
         
-        const sound = new Audio(MUSICLIST[i])
-        sound.play()
-        
+        playSound(i)
 
         document.querySelectorAll("button")[i].style.color = "black"
 
