@@ -13,7 +13,7 @@ $("#start-btn").on("click", function () {
 
         setTimeout(() => {
 
-            $("#level-title").text("Level " + level)
+            
             nextSequence()
         }, 500);
 
@@ -39,14 +39,23 @@ $(".btn").on("click", function(){
 
 
 function nextSequence() {
-    $("#level-title").text("Level " + level)
-    var randomNumber = Math.floor(Math.random() * (4) )
-    var randomChosenColor = buttonColors[randomNumber];
-    gamePattern.push(randomChosenColor);
-    playSound(randomChosenColor)
-
     // increase the level
     level++;
+
+    // changing level title
+    $("#level-title").text("Level " + level)
+
+    // generate random color
+    var randomNumber = Math.floor(Math.random() * (4) )
+    var randomChosenColor = buttonColors[randomNumber];
+
+    // save color in gamepattern array
+    gamePattern.push(randomChosenColor);
+
+    // playing sounds
+    playSound(randomChosenColor)
+
+
     
 }
 
@@ -75,9 +84,6 @@ function animateUserPress(currentColor){
 
 function checkAnswer(currentLevel){
 
-
-    console.log(userClickedPattern.slice(currentLevel,))
-    console.log(gamePattern)
 
 
     if (userClickedPattern[currentLevel] === gamePattern[currentLevel]){
