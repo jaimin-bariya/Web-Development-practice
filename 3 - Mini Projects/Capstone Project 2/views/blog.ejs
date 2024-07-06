@@ -1,0 +1,26 @@
+<%- include("partials/header.ejs") %>
+
+
+
+    <div class="single-blog-container">
+
+        <div class="blog-t">
+            <h1> <%= blog.allBlogs[blog.blogID].title %> </h1>
+            <br>
+            <br>
+            <a href="<%= blog.blogID %>/edit"> <button style="background-color: lightblue; border: 1px solid black; padding: 5px; width: 100px; height: 30px; border-radius: 5px; margin-right: 10px;" >Edit Me</button></a>
+            <a href="<%= blog.blogID %>/delete"> <button style="background-color: firebrick; border: 1px solid black; padding: 5px; width: 100px; height: 30px; border-radius: 5px; margin-left: 10px;" >Delete Me</button></a>
+            <hr id="hr-line">
+        </div>
+
+        <div class="blog-p">
+            <p> <%= blog.allBlogs[blog.blogID].content %>  <p>
+        </div>
+
+    </div>
+
+
+
+ 
+<%- include("partials/footer.ejs") %>
+

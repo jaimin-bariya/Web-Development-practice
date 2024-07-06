@@ -1,0 +1,69 @@
+<%- include("partials/header.ejs") %>
+
+
+<div class="welcome-div">
+
+    <div>
+        <h1>Welcome to the Blog Blogger,</h1>
+        <p style="font-size:large; overflow-wrap: break-word;" >here, you are able to find world's worst suggesions, I hope you and your brain will be fine, See u soon, Ha ha ha...</p>
+        <a href="blog/create"> <button style="background-color: lightblue; border-radius: 10px; width: 30%; height: 40px;">Write Blog for Us</button> </a>
+    </div>
+
+
+    <div>
+        <img src="images/welcome-home.jpg" alt="welcome to the home" width="500px" height="500px">
+    </div>
+
+</div>
+
+
+
+<div class="blog-container">
+
+
+
+    <% if (locals.listOfBlogs)  { %>
+
+        <% for (var blogid = 0; blogid < listOfBlogs.length; blogid++) { %>
+
+            <div class="blog-item">
+
+                
+                <strong> <%= listOfBlogs[blogid].title %> </strong>
+                <hr>
+                <p> <%= listOfBlogs[blogid].content %> </p>
+
+                <a href="/blogs/<%= blogid %>">
+                    <button class="cus-btn" > Read More </button>
+                </a>
+
+            </div>
+        
+        <% }; %>
+        
+
+    <% } else { %>
+
+
+        <h1> Nothing to see here...<h1>
+
+
+    <% } %>
+
+
+
+
+</div>
+
+
+
+
+
+
+<script src="js/script.js"></script>
+ 
+<%- include("partials/footer.ejs") %>
+
+
+
+
