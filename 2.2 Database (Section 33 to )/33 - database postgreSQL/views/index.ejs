@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Capital Guess Quiz</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+
+
+    <div class="main-container">
+
+
+        <h1>Capital Guess Game</h1>
+        <br>
+        <div class="score-info">
+
+            <% if (locals.score) { %>
+
+            <p>Your Current Score: <%= score.current %></p>
+            <p>Your High Score: <%= score.high %> </p>
+
+            <% } else { %>            
+                <p>Your Current Score: 0 </p>
+                <p>Your High Score: 0  </p>
+            <% } %>
+        </div>
+        <hr>
+
+        <h2>Guess the capital of... </h2>
+
+        <% if (locals.score) { %>
+        <h2> <%= score.country %> </h2>
+        <% } %>
+
+        <form action="/" method="post"> 
+
+            <input type="text" id="text-box" placeholder="Capital" name="user_guess">
+
+            <br>
+            <button type="submit" id="sub-btn">Go</button>
+
+
+        </form>
+
+
+    </div>
+
+
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+                document.getElementById("text-box").focus();
+        })
+
+    </script>
+</body>
+</html>

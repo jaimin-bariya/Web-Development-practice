@@ -1,0 +1,52 @@
+body{
+    background-image: url(../img/bg.jpeg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+
+
+.main-container {
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: white;
+    padding: 20px;
+    width: 40%;
+    text-align: center;
+}
+
+
+
+#text-box {
+        width: 160px;
+        height: 30px;
+        padding: 5px;
+        border: 1px solid black;
+        border-radius: 10px;
+        
+}
+
+
+#sub-btn {
+    width: 160px;
+    height: 30px;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: orangered;
+    border-radius: 10px;
+    margin: 20px;
+    font-weight: bolder;
+}
+
+
+.score-info{
+    display: flex;
+    justify-content:space-between;
+
+}
