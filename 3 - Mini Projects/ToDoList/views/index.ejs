@@ -1,0 +1,174 @@
+<%- include('partials/header.ejs')%>
+
+<body>
+    
+    <div class="main-container">
+
+        <div class="heading">
+            <h1> Today </h1>
+        </div>
+
+
+        <div class="list-cont">
+
+            <div class="task-cont">
+
+                <% if (locals.alltask) { %>
+                
+                <% alltask.forEach(task => { %>
+
+                        <form action="/edit" class="item" method="post" id="taskform-<%=task.taskid%>">
+
+                            <button id="<%=task.taskid%>"  name="type" value="complete"> ⃣ </button>
+                            <!-- <input class="symbol" type="checkbox" name="type" value="complete"> -->
+                            <input type="text" value="<%=task.task%> - <%=task.status%>" name="task"> 
+                            <input type="hidden" name="taskid" value="<%=task.taskid%>">
+                            <button class="symbol" name="type" value="edit-task">🖋️</button>
+                            
+                        </form>
+
+                    <% }); %>
+
+
+                <% } %>
+
+
+            </div>
+
+
+
+
+
+            
+
+
+           
+
+
+
+
+            <form action="/task-add" method="post" class="addtask-cont" id="add-task-form">
+
+                <input type="text" name="task" autofocus placeholder="New task" id="new-task" >
+                <button id="add-btn" type="submit">+</button>
+
+            </form>
+
+
+
+            
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+
+            // document.getElementById("1").onclick = function(){
+            //     document.getElementById('task1').classList.toggle("line-through")
+            //     console.log("done")
+            //     console.log(document.getElementById("task1").classList)
+            // }
+
+
+            document.querySelectorAll('input[type="text"]').forEach(input => {
+            input.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const form = input.closest('form');
+                    const editButton = form.querySelector('button[name="type"][value="edit-task"]');
+                    editButton.click();
+                }
+            });
+            });
+
+            document.getElementById("new-task").addEventListener('keydown', function(event) {
+
+                if (event.key === 'Enter') {
+                    const btn = document.getElementById("add-btn")
+                    btn.click()
+                }
+
+            })
+
+
+
+            // AJAX functionality 
+            document.querySelectorAll(".item form").forEach(form => {
+                form.addEventListener('submit', async function(event) {
+                    event.preventDefault()
+
+                    const formData = new FormData(form)
+
+                    console.log(formData)
+
+                    try {
+                        const response = await axios.post(form.action, formData)
+                        updateTaskPage(response.data)
+
+                    } catch {
+                        console.error("Error while sending and receing data")
+                    }
+
+                })
+            })
+
+
+
+
+            // function to update page from receieved data
+            function updateTaskPage(tasks){
+
+                const taksCont = document.querySelector(".task-cont");
+                taksCont.innerHTML = '' // empty the cont
+
+                tasks.forEach(task => {
+                    const form = document.createElement("form")
+                    form.action = "/edit"
+                    form.method = 'post'
+                    form.classList.add('item')
+                    form.id = `taskform-${task.taskid}`
+                    form.innerHTML = `
+
+                        <button id="${task.taskid}""  name="type" value="complete"> ⃣ </button>
+                        <!-- <input class="symbol" type="checkbox" name="type" value="complete"> -->
+                        <input type="text" id="task${task.taskid}" value="${task.task} - ${task.status}" name="task"> 
+                        <input type="hidden" name="taskid" value="${task.taskid}">
+                        <button class="symbol" name="type" value="edit-task">🖋️</button>
+                        
+                        `;
+
+                    taksCont.appendChild(form);
+                })
+
+                
+
+
+            }
+
+
+
+
+            
+
+
+
+
+
+    </script>
+
+</body>
+
+
+
+
+
+<%- include('partials/footer.ejs')%>

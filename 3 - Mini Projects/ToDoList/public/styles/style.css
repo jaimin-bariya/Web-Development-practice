@@ -1,0 +1,135 @@
+body {
+    background-color:lightblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+
+}
+
+
+.main-container {
+    margin-top: 60px;
+
+    width: 500px;
+    flex-direction: column;
+
+
+}
+
+
+.main-container .heading {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 16px;
+    color: white;
+    background-color: blueviolet;
+    border-radius: 10px 10px 0px 0px;
+    padding: 10px;
+    height: 60px;
+    width: 100%;
+}
+
+
+.main-container .list-cont {
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    margin-top: 30px;
+    padding: 10px;
+    height: auto;
+    width: 100%;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+
+
+    padding-bottom: 20px;
+
+    
+
+
+}
+
+.main-container .list-cont .addtask-cont {
+    display: grid;
+    grid-template-columns: auto 10%;
+    gap: 10px;
+    margin-top: 20px;
+    
+}
+
+
+.addtask-cont button {
+    color: white;
+    background-color: blueviolet;
+    font-size: 40px;
+    padding: 0;
+    border: 0px;
+    text-align: center;
+    border-radius: 50%;
+
+}
+
+
+.addtask-cont input {
+    border: 0;
+    border-bottom: 2px solid blueviolet;
+    padding: 10px 0px 0px 10px;
+    font-size:1rem;
+    
+
+}
+
+
+.addtask-cont input:focus {
+    outline: none;
+    font-size: 1rem;
+    
+}
+
+
+.list-cont ul li {
+    list-style-type: none;
+    font-size: 1.3rem;
+}
+
+.list-cont .item {
+    padding: 10px 0;
+    height: 40px;
+    width: 100%;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 10% auto 10%;
+    gap: 10px;
+    border-bottom: 1px solid black;
+    
+
+}
+
+
+.list-cont .item button{
+    padding: 0;
+    font-size: 1.5rem;
+    background-color: white;
+    border: 0;
+    color: blueviolet; 
+    
+
+}
+
+
+.list-cont .item input {
+    border: 0;
+    font-size: 1rem;
+
+}
+
+
+.line-through {
+    text-decoration: line-through;
+}
+
+/* 
+.task-cont {
+    
+} */
